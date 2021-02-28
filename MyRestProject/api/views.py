@@ -2,12 +2,13 @@ from django.http import JsonResponse
 from django.shortcuts import render
 
 # Create your views here.
+from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 
 from .models import Car
 from .serializers import CarSerializer
 
-
+@csrf_exempt
 def car_list(request):
 
     if request.method == 'GET':
