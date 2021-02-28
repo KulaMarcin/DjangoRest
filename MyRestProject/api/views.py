@@ -4,17 +4,18 @@ from django.shortcuts import render
 # Create your views here.
 from rest_framework.parsers import JSONParser
 
-from MyRestProject.api.models import Car
-from MyRestProject.api.serializers import CarSerializer
+from .models import Car
+from .serializers import CarSerializer
 
 
 def car_list(request):
 
-    if request == 'GET':
+    if request.method == 'GET':
         cars = Car.objects.all()
         serializer = CarSerializer(cars, many=True)
         return JsonResponse(serializer.data, safe=False)
-    elif request == 'POST':
+
+    elif request.method == 'POST':
         data = JSONParser().parse(request)
         serializer = CarSerializer(data=data)
 
