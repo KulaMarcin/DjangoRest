@@ -21,3 +21,6 @@ class Person(models.Model):
 
 class Employee(models.Model):
     name = models.CharField(max_length=20)
+
+class Game(models.Model):
+    title = models.CharField(max_length=20)
