@@ -10,6 +10,8 @@ from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework import generics
 from rest_framework import mixins
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 from .models import Car, Person
 from .serializers import CarSerializer, PersonSerializer
@@ -26,6 +28,8 @@ class GenericAPIView(generics.GenericAPIView,
 
     serializer_class = PersonSerializer
     queryset = Person.objects.all()
+    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    permission_classes = [IsAuthenticated]
 
     lookup_field = 'id'
 
@@ -91,6 +95,8 @@ class CarDetails(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
+# API_VIEW BASED FUNCTIONS - ALTERNATIVE FOR API_VIEW BASED CLASSES
+
 @api_view(['GET', 'POST'])
 def car_list(request):
 
@@ -106,8 +112,6 @@ def car_list(request):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-# API_VIEW BASED FUNCTIONS - ALTERNATIVE FOR API_VIEW BASED CLASSES
 
 # @api_view(['GET', 'PUT', 'DELETE'])
 # def car_detail(request, pk):
