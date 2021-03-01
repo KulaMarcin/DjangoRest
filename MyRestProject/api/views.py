@@ -10,7 +10,7 @@ from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework import generics
 from rest_framework import mixins
-from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication, TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 
 from .models import Car, Person
@@ -28,7 +28,8 @@ class GenericAPIView(generics.GenericAPIView,
 
     serializer_class = PersonSerializer
     queryset = Person.objects.all()
-    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    # authentication_classes = [SessionAuthentication, BasicAuthentication]
+    authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
 
     lookup_field = 'id'
