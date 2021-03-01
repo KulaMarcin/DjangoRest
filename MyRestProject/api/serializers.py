@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Car, Person, Employee, Game
+from .models import Car, Person, Employee, Game, Student
 
 
 class CarSerializer(serializers.ModelSerializer):
@@ -23,4 +23,10 @@ class EmployeeSerializer(serializers.ModelSerializer):
 class GameSerializer(serializers.ModelSerializer):
     class Meta:
         model = Game
+        fields = '__all__'
+
+
+class StudentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Student
         fields = '__all__'

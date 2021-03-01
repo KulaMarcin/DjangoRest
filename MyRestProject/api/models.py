@@ -19,8 +19,15 @@ class Person(models.Model):
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
 
+
 class Employee(models.Model):
     name = models.CharField(max_length=20)
 
+
 class Game(models.Model):
     title = models.CharField(max_length=20)
+
+
+class Student(models.Model):
+    first_name = models.CharField(max_length=20)
+    last_name = models.CharField(max_length=20)
