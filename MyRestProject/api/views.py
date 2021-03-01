@@ -15,10 +15,18 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework import viewsets
 from django.shortcuts import get_object_or_404
 
-from .models import Car, Person, Employee, Game
-from .serializers import CarSerializer, PersonSerializer, EmployeeSerializer, GameSerializer
+from .models import Car, Person, Employee, Game, Student
+from .serializers import CarSerializer, PersonSerializer, EmployeeSerializer, GameSerializer, StudentSerializer
 
-# GANERIC VIEW SET FOR GAME
+# MODEL VIEW SET FOR STUDENT
+
+
+class StudentModelViewSet(viewsets.ModelViewSet):
+    serializer_class = StudentSerializer
+    queryset = Student.objects.all()
+
+
+# GENERIC VIEW SET FOR GAME
 
 class GameGenericViewSet(viewsets.GenericViewSet,
                          mixins.ListModelMixin,
