@@ -1,12 +1,13 @@
 from django.contrib import admin
 from django.urls import path, include
 
-from .views import car_list, CarAPIView, CarDetails, GenericAPIView, EmployeeViewSet, GameGenericViewSet
+from .views import car_list, CarAPIView, CarDetails, GenericAPIView, EmployeeViewSet, GameGenericViewSet, StudentModelViewSet
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
 router.register('employee', EmployeeViewSet, basename='employee')
 router.register('game', GameGenericViewSet, basename='game')
+router.register('student', StudentModelViewSet, basename='student')
 
 urlpatterns = [
     # for api_view based functions
