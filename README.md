@@ -1,4 +1,4 @@
-# DjangoRest - rest service using django rest framework with:
+# DjangoRest - rest api using django rest framework with:
 
 - Serializers
 - APIView
